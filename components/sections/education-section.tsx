@@ -61,9 +61,26 @@ export function EducationSection() {
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
 
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-5">
-              <div>
-                <h3 className="text-xl font-bold">{item.degree}</h3>
-                <p className="text-primary font-medium text-sm">{item.school}</p>
+              <div className="flex items-center gap-3 min-w-0">
+                {'logo' in item && item.logo && (
+                  <a href={'link' in item ? (item.link as string) : '#'} target="_blank" rel="noopener noreferrer" className="shrink-0">
+                    <img
+                      src={item.logo as string}
+                      alt={`${item.school} logo`}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </a>
+                )}
+                <div className="min-w-0">
+                  <h3 className="text-xl font-bold">{item.degree}</h3>
+                  {'link' in item && item.link ? (
+                    <a href={item.link as string} target="_blank" rel="noopener noreferrer" className="text-primary font-medium text-sm hover:underline">
+                      {item.school}
+                    </a>
+                  ) : (
+                    <p className="text-primary font-medium text-sm">{item.school}</p>
+                  )}
+                </div>
               </div>
               <span className="text-text-muted text-sm shrink-0">{item.period}</span>
             </div>

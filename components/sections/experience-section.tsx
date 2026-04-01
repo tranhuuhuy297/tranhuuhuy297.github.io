@@ -32,6 +32,9 @@ export function ExperienceSection() {
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [progressStyle, setProgressStyle] = useState({ left: 0, width: 0 });
   const [dotCenter, setDotCenter] = useState(0);
+  const [laserKey, setLaserKey] = useState(0);
+  const [laserDir, setLaserDir] = useState<'left' | 'right'>('right');
+  const prevActive = useRef(experienceData.length - 1);
 
   const updateProgress = useCallback((index: number) => {
     const track = trackRef.current;
@@ -64,30 +67,89 @@ export function ExperienceSection() {
       <div ref={trackRef} className="relative max-w-3xl mx-auto mb-10">
         {/* Track line between first and last dot — rendered via JS for accuracy */}
         <div className="absolute top-[7px] left-0 right-0 h-0.5 bg-border" />
-        {/* Animated progress fill with glow */}
+        {/* Animated progress fill with gradient + electric pulse */}
         <motion.div
-          className="absolute top-[7px] h-0.5 bg-primary"
-          style={{ boxShadow: '0 0 8px var(--color-primary)' }}
+          className="absolute top-[7px] h-0.5 overflow-hidden"
+          style={{ background: 'linear-gradient(to right, oklch(from var(--color-primary) l c h / 0.15), var(--color-primary))', boxShadow: '0 0 8px var(--color-primary)' }}
           initial={false}
           animate={{ left: progressStyle.left, width: progressStyle.width }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
-        />
+        >
+          {/* Electric pulse that sweeps left→right */}
+          <motion.div
+            className="absolute inset-y-0 w-1/3"
+            style={{ background: 'linear-gradient(to right, transparent, oklch(from var(--color-primary) l c h / 0.7), transparent)' }}
+            animate={{ left: ['-33%', '133%'] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1 }}
+          />
+        </motion.div>
 
-        {/* Favicon runner — slides along the progress bar */}
+        {/* Darkseid runner — centered on the progress bar line */}
         <motion.div
-          className="absolute z-20 pointer-events-none"
-          style={{ top: -10 }}
+          className="absolute z-20 pointer-events-none -translate-x-1/2"
+          style={{ top: 'calc(7px - 12px)' }}
           initial={false}
           animate={{ left: dotCenter }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           <img
-            src="/icon.png"
+            src="/heroes/darkseid.png"
             alt=""
-            width={28}
-            height={28}
-            className="relative -translate-x-1/2 rounded-full drop-shadow-[0_0_6px_var(--color-primary)]"
+            width={24}
+            height={24}
+            className="rounded-full drop-shadow-[0_0_6px_var(--color-primary)]"
           />
+
+          {/* Omega Beam — twin red lasers shooting downward toward card */}
+          <AnimatePresence>
+            <motion.svg
+              key={laserKey}
+              className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+              style={{ top: 20, transformOrigin: 'top center' }}
+              width="24"
+              height="80"
+              viewBox="0 0 24 80"
+              initial={{ opacity: 0, scaleY: 0 }}
+              animate={{ opacity: [0, 1, 1, 0], scaleY: [0, 1, 1, 0.3] }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, times: [0, 0.2, 0.7, 1] }}
+            >
+              {/* Left Omega beam — zigzag downward */}
+              <motion.path
+                d="M8,0 L4,12 L10,24 L2,36 L8,48 L4,60 L10,72 L6,80"
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="2"
+                strokeLinecap="round"
+                filter="url(#omegaGlow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.4 }}
+              />
+              {/* Right Omega beam — zigzag downward */}
+              <motion.path
+                d="M16,0 L20,12 L14,24 L22,36 L16,48 L20,60 L14,72 L18,80"
+                fill="none"
+                stroke="#dc2626"
+                strokeWidth="2"
+                strokeLinecap="round"
+                filter="url(#omegaGlow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.4, delay: 0.05 }}
+              />
+              {/* Glow filter */}
+              <defs>
+                <filter id="omegaGlow">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+            </motion.svg>
+          </AnimatePresence>
         </motion.div>
 
         {/* Timeline nodes */}
@@ -95,7 +157,13 @@ export function ExperienceSection() {
           {experienceData.map((exp, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={() => {
+                if (i === active) return;
+                setLaserDir(i > active ? 'right' : 'left');
+                setLaserKey((k) => k + 1);
+                prevActive.current = active;
+                setActive(i);
+              }}
               className="group flex flex-col items-center gap-2 cursor-pointer bg-transparent border-none"
             >
               {/* Dot */}
@@ -141,9 +209,24 @@ export function ExperienceSection() {
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
 
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-4">
-              <div>
-                <h3 className="text-xl font-bold">{item.title}</h3>
-                <p className="text-primary font-medium text-sm">{item.company}</p>
+              <div className="flex items-center gap-3 min-w-0">
+                {'logo' in item && item.logo && (
+                  <img
+                    src={item.logo}
+                    alt={`${item.company} logo`}
+                    className="w-8 h-8 object-contain shrink-0"
+                  />
+                )}
+                <div className="min-w-0">
+                  <h3 className="text-xl font-bold truncate">{item.title}</h3>
+                  {'link' in item && item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-primary font-medium text-sm truncate block hover:underline">
+                      {item.company}
+                    </a>
+                  ) : (
+                    <p className="text-primary font-medium text-sm truncate">{item.company}</p>
+                  )}
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 {/* Duration badge */}

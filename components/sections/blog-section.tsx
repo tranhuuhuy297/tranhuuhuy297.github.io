@@ -10,10 +10,7 @@ import { staggerContainerVariants, staggerItemVariants } from '@/lib/motion-vari
 export function BlogSection() {
   return (
     <SectionWrapper id="blog">
-      <h2 className="text-3xl md:text-4xl mb-4 text-center">Blog</h2>
-      <p className="text-text-muted mb-8 text-center">
-        Thoughts on engineering, architecture, and craft.
-      </p>
+      <h2 className="text-3xl md:text-4xl mb-8 text-center">Blog</h2>
 
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-6"

@@ -2,8 +2,8 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { HeroCoinFlip } from '@/components/ui/hero-coin-flip';
 import { heroData, aboutData } from '@/lib/constants';
 import { techIcons } from '@/lib/tech-icons';
 
@@ -16,21 +16,14 @@ export function HeroSection() {
       <div className="hero-gradient absolute inset-0 -z-10" />
 
       <div className="text-center max-w-3xl mx-auto px-4">
-        {/* Avatar / Logo */}
+        {/* Avatar — coin-flip through Justice League heroes */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: d ?? 0.3, duration: 0.5 }}
           className="mb-6"
         >
-          <Image
-            src="/icon.png"
-            alt="Logo"
-            width={120}
-            height={120}
-            className="rounded-full mx-auto border-2 border-primary"
-            priority
-          />
+          <HeroCoinFlip />
         </motion.div>
 
         <motion.p
@@ -95,13 +88,15 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <motion.div
+      <motion.a
+        href="#experience"
         animate={prefersReducedMotion ? {} : { y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-text-muted hover:text-primary transition-colors"
+        aria-label="Scroll down"
       >
-        <ChevronDown className="w-6 h-6 text-text-muted" />
-      </motion.div>
+        <ChevronDown className="w-6 h-6" />
+      </motion.a>
     </section>
   );
 }

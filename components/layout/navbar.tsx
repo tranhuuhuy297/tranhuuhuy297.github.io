@@ -10,15 +10,12 @@ import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
     setIsScrolled(latest > 50);
-    setIsVisible(latest < previous || latest < 50);
   });
 
   /* Track which section is in view */
@@ -48,8 +45,6 @@ export function Navbar() {
           'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
           isScrolled ? 'backdrop-blur-md bg-background/80 border-b border-border' : 'bg-transparent'
         )}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.2 }}
       >
         <div className="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           {/* Logo / Name */}

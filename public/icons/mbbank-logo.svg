@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100,100)">
+    <!-- MB Bank star - 7 rounded capsule rays -->
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(0)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(51.4)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(102.8)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(154.3)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(205.7)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(257.1)"/>
+    <rect x="-8" y="-90" width="16" height="55" rx="8" fill="#EF4444" transform="rotate(308.6)"/>
+  </g>
+</svg>

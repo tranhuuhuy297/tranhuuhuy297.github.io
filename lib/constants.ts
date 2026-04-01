@@ -44,6 +44,12 @@ export const aboutData = {
 
 export const experienceData = [
   {
+    title: 'Software Engineer',
+    company: 'Geniee International Group',
+    period: '04/2024 - Present',
+    highlights: [],
+  },
+  {
     title: 'Backend Engineer',
     company: 'MBBank - Military Commercial Joint Stock Bank',
     period: '06/2023 - 04/2024',

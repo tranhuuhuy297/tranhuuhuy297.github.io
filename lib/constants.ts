@@ -44,18 +44,12 @@ export const aboutData = {
 
 export const experienceData = [
   {
-    title: 'Software Engineer',
-    company: 'Geniee International Group',
-    period: '04/2024 - Present',
-    highlights: [],
-  },
-  {
-    title: 'Backend Engineer',
-    company: 'MBBank - Military Commercial Joint Stock Bank',
-    period: '06/2023 - 04/2024',
+    title: 'Software Engineer Intern',
+    company: 'VinBigData Joint Stock Company',
+    period: '08/2021 - 12/2021',
     highlights: [
-      'Built data sync service (Oracle to MongoDB) using Spring Boot and Kafka CDC to reduce Core system load',
-      'Developed runtime Kafka consumption control — pause, stop, and reset commit offsets on the fly',
+      'Trained ML/DL models using PyTorch on crawled data via Selenium',
+      'Built demo APIs with Flask for model inference',
     ],
   },
   {
@@ -71,12 +65,27 @@ export const experienceData = [
     ],
   },
   {
-    title: 'Software Engineer Intern',
-    company: 'VinBigData Joint Stock Company',
-    period: '08/2021 - 12/2021',
+    title: 'Backend Engineer',
+    company: 'MBBank - Military Commercial Joint Stock Bank',
+    period: '06/2023 - 04/2024',
     highlights: [
-      'Trained ML/DL models using PyTorch on crawled data via Selenium',
-      'Built demo APIs with Flask for model inference',
+      'Built data sync service (Oracle to MongoDB) using Spring Boot and Kafka CDC to reduce Core system load',
+      'Developed runtime Kafka consumption control — pause, stop, and reset commit offsets on the fly',
+    ],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Geniee International Group',
+    period: '04/2024 - Present',
+    highlights: [
+      'Delivered 222 PRs and 100+ Jira tickets across 7 repositories for the ARCH enterprise platform',
+      'Built full-stack features for Mizuho Financial Group — multi-session auth, customer hierarchy sync, IP restrictions, and MFA flows',
+      'Designed and implemented an event management system (meetup, seminar, pitch, mentoring) with QR codes, matching logic, and multi-step forms',
+      'Core contributor to arch-ui-kit — shared React component library with TailwindCSS v4 and comprehensive unit testing (5,000+ lines)',
+      'Optimized Kubernetes infrastructure — PodDisruptionBudget, readiness probes, graceful shutdown, and DB connection pool tuning',
+      'Modernized CI/CD — ESLint 8→9 migration removing 4,596 lines of config debt, Docker cache pruning, build concurrency fixes',
+      'Built bi-directional SFA-CRM data sync pipeline with GraphQL mutations, deduplication, and retry mechanisms',
+      'Established E2E testing with Playwright and unit testing patterns with Vitest + React Testing Library',
     ],
   },
 ];
@@ -88,6 +97,7 @@ export const educationData = [
     period: '2018 - 2023',
     highlights: [
       'CPA: 3.48 / 4.0',
+      'IEEE published paper [→ View](https://ieeexplore.ieee.org/abstract/document/10339689)',
       '1st prize — HUST-IBM Hackathon 2021',
       'Deep Learning Specialization (Coursera)',
     ],
@@ -114,17 +124,11 @@ export const projectsData: {
 
 export const blogPostsData = [
   {
-    title: 'Building Scalable Systems: Lessons Learned',
-    date: '2026-03-15',
+    slug: 'kafka-streams-basics',
+    title: 'Kafka Streams Basics: Real-Time Data Processing Made Simple',
+    date: '2026-04-01',
     excerpt:
-      'Key architectural patterns that helped our team scale from 1K to 1M users.',
-    readTime: '8 min read',
-  },
-  {
-    title: 'The Art of Code Review',
-    date: '2026-02-28',
-    excerpt:
-      'How to give and receive code reviews that actually improve code quality.',
-    readTime: '5 min read',
+      'A practical guide to Kafka Streams — what it is, how it works under the hood, and when you should (or shouldn\'t) use it.',
+    readTime: '12 min read',
   },
 ];

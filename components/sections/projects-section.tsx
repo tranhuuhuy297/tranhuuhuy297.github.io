@@ -12,7 +12,7 @@ export function ProjectsSection() {
       <h2 className="text-3xl md:text-4xl mb-8 text-center">Projects</h2>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"

@@ -9,11 +9,11 @@ import { staggerContainerVariants, staggerItemVariants } from '@/lib/motion-vari
 
 export function BlogSection() {
   return (
-    <SectionWrapper id="blog">
+    <SectionWrapper id="blog" alternate>
       <h2 className="text-3xl md:text-4xl mb-8 text-center">Blog</h2>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"

@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/section-wrapper';
-import { experienceData } from '@/lib/constants';
+import { experienceData, projectsData } from '@/lib/constants';
 
 /** Calculate human-readable duration between MM/YYYY periods */
 function calcDuration(period: string): string {
@@ -64,7 +64,7 @@ export function ExperienceSection() {
       <h2 className="text-3xl md:text-4xl mb-10 text-center">Experience</h2>
 
       {/* Timeline bar */}
-      <div ref={trackRef} className="relative max-w-3xl mx-auto mb-10">
+      <div ref={trackRef} className="relative max-w-4xl mx-auto mb-10">
         {/* Track line between first and last dot — rendered via JS for accuracy */}
         <div className="absolute top-[7px] left-0 right-0 h-0.5 bg-border" />
         {/* Animated progress fill with gradient + electric pulse */}
@@ -73,7 +73,7 @@ export function ExperienceSection() {
           style={{ background: 'linear-gradient(to right, oklch(from var(--color-primary) l c h / 0.15), var(--color-primary))', boxShadow: '0 0 8px var(--color-primary)' }}
           initial={false}
           animate={{ left: progressStyle.left, width: progressStyle.width }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           {/* Electric pulse that sweeps left→right */}
           <motion.div
@@ -90,7 +90,7 @@ export function ExperienceSection() {
           style={{ top: 'calc(7px - 12px)' }}
           initial={false}
           animate={{ left: dotCenter }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <img
             src="/heroes/darkseid.png"
@@ -112,7 +112,7 @@ export function ExperienceSection() {
               initial={{ opacity: 0, scaleY: 0 }}
               animate={{ opacity: [0, 1, 1, 0], scaleY: [0, 1, 1, 0.3] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, times: [0, 0.2, 0.7, 1] }}
+              transition={{ duration: 0.4, times: [0, 0.2, 0.7, 1] }}
             >
               {/* Left Omega beam — zigzag downward */}
               <motion.path
@@ -124,7 +124,7 @@ export function ExperienceSection() {
                 filter="url(#omegaGlow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.25 }}
               />
               {/* Right Omega beam — zigzag downward */}
               <motion.path
@@ -136,7 +136,7 @@ export function ExperienceSection() {
                 filter="url(#omegaGlow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.4, delay: 0.05 }}
+                transition={{ duration: 0.25, delay: 0.03 }}
               />
               {/* Glow filter */}
               <defs>
@@ -194,7 +194,7 @@ export function ExperienceSection() {
       </div>
 
       {/* Detail card */}
-      <div className="max-w-3xl mx-auto">
+      <div className="relative max-w-4xl mx-auto">
         <AnimatePresence mode="popLayout">
           <motion.div
             key={active}
@@ -255,7 +255,63 @@ export function ExperienceSection() {
             ) : (
               <p className="text-text-muted text-sm italic">Details coming soon...</p>
             )}
+
+            {/* Mobile project badges */}
+            {'projects' in item && item.projects && item.projects.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-border lg:hidden">
+                {item.projects.map((projectName) => {
+                  const project = projectsData.find((p) => p.title === projectName);
+                  return (
+                    <button
+                      key={projectName}
+                      onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-medium text-primary hover:bg-primary/15 transition-all cursor-pointer"
+                    >
+                      {project?.logo && <img src={project.logo} alt="" className="w-4 h-4 object-contain" />}
+                      {projectName}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
+
+          {/* Related project cards — floating right side */}
+          {'projects' in item && item.projects && item.projects.length > 0 && (
+            <motion.div
+              className="hidden lg:flex flex-col gap-3 absolute -right-52 top-0 w-44"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
+            >
+              <span className="text-[10px] uppercase tracking-wider text-text-muted font-semibold mb-1">Projects</span>
+              {item.projects.map((projectName) => {
+                const project = projectsData.find((p) => p.title === projectName);
+                return (
+                  <button
+                    key={projectName}
+                    onClick={() => {
+                      const el = document.getElementById('projects');
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="group flex items-center gap-2.5 p-2.5 rounded-lg bg-card border border-border hover:border-primary/40 hover:shadow-[0_0_12px_oklch(from_var(--color-primary)_l_c_h_/_0.15)] transition-all cursor-pointer text-left"
+                  >
+                    {project?.logo && (
+                      <img src={project.logo} alt="" className="w-6 h-6 object-contain shrink-0" />
+                    )}
+                    <div className="min-w-0">
+                      <span className="text-xs font-semibold text-text group-hover:text-primary transition-colors block truncate">
+                        {projectName}
+                      </span>
+                      {project?.demo && (
+                        <span className="text-[10px] text-text-muted">View →</span>
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </SectionWrapper>

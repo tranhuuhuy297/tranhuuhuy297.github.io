@@ -43,7 +43,7 @@ function AbilityBurst({ heroIndex }: { heroIndex: number }) {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
         initial={{ width: 40, height: 40, opacity: 0.8, borderWidth: 3 }}
         animate={{ width: 200, height: 200, opacity: 0, borderWidth: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
         style={{ borderColor: hero.glow, borderStyle: 'solid' }}
       />
 
@@ -52,7 +52,7 @@ function AbilityBurst({ heroIndex }: { heroIndex: number }) {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
         initial={{ width: 30, height: 30, opacity: 0.5, borderWidth: 2 }}
         animate={{ width: 160, height: 160, opacity: 0, borderWidth: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+        transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 }}
         style={{ borderColor: hero.glow, borderStyle: 'solid' }}
       />
 
@@ -69,7 +69,7 @@ function AbilityBurst({ heroIndex }: { heroIndex: number }) {
             scale: p.scale * 0.2,
             rotate: p.rotate,
           }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: p.delay }}
+          transition={{ duration: 0.45, ease: 'easeOut', delay: p.delay }}
           style={{ fontSize: 14 + p.scale * 6 }}
         >
           {hero.particles}
@@ -81,7 +81,7 @@ function AbilityBurst({ heroIndex }: { heroIndex: number }) {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[120px] rounded-full"
         initial={{ opacity: 0.6, scale: 0.8 }}
         animate={{ opacity: 0, scale: 1.8 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.35 }}
         style={{ background: `radial-gradient(circle, ${hero.glow}50, ${hero.color}20, transparent 70%)` }}
       />
     </div>
@@ -101,8 +101,8 @@ export function HeroCoinFlip() {
       setIndex(nextIndex);
       setBurstHero(nextIndex);
       setBurstKey((k) => k + 1);
-    }, 300);
-    setTimeout(() => setFlipping(false), 700);
+    }, 150);
+    setTimeout(() => setFlipping(false), 350);
   }, [flipping]);
 
   const flip = useCallback(() => {
@@ -139,7 +139,7 @@ export function HeroCoinFlip() {
             initial={{ rotateY: 90, scale: 0.8 }}
             animate={{ rotateY: 0, scale: 1 }}
             exit={{ rotateY: -90, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: `0 0 20px ${hero.glow}40, 0 0 40px ${hero.glow}15`,

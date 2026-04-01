@@ -17,7 +17,7 @@ export function EducationSection() {
   };
 
   return (
-    <SectionWrapper id="education">
+    <SectionWrapper id="education" alternate>
       <h2 className="text-3xl md:text-4xl mb-10 text-center">Education</h2>
 
       {/* Horizontal tabs with animated indicator */}
@@ -45,7 +45,7 @@ export function EducationSection() {
       </div>
 
       {/* Detail card */}
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
             key={active}

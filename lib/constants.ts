@@ -60,6 +60,7 @@ export const experienceData = [
     logo: '/icons/vinbigdata-logo.png',
     link: 'https://vinbigdata.com/',
     period: '01/2022 - 05/2023',
+    projects: ['Vinbase'],
     highlights: [
       'Developed core modules for Vinbase — an AI chatbot management platform — across 2 versions',
       'Built APIs for chatbot training data and versioning with Flask, FastAPI, and MongoDB',
@@ -85,6 +86,7 @@ export const experienceData = [
     logo: '/icons/geniee-logo.svg',
     link: 'https://geniee.co.jp/en/',
     period: '08/2024 - Present',
+    projects: ['ARCH Platform', 'CHIKYU (SFA-CRM)'],
     highlights: [
       'Built enterprise features for Mizuho — multi-session auth, customer hierarchy sync, IP restrictions, and MFA',
       'Designed event management system with QR codes, matching logic, and multi-step forms',

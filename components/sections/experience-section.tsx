@@ -38,8 +38,13 @@ export function ExperienceSection() {
     const activeDot = dotRefs.current[index];
     if (!track || !firstDot || !activeDot) return;
     const trackRect = track.getBoundingClientRect();
+    const lastDot = dotRefs.current[experienceData.length - 1];
+    if (!lastDot) return;
     const activeCenter = activeDot.getBoundingClientRect().left + activeDot.getBoundingClientRect().width / 2 - trackRect.left;
-    setProgressStyle({ left: 0, width: activeCenter });
+    const lastCenter = lastDot.getBoundingClientRect().left + lastDot.getBoundingClientRect().width / 2 - trackRect.left;
+    // Scale to full track width so first dot = 0% and last dot = 100%
+    const ratio = lastCenter > 0 ? activeCenter / lastCenter : 0;
+    setProgressStyle({ left: 0, width: ratio * trackRect.width });
   }, []);
 
   useEffect(() => { updateProgress(active); }, [active, updateProgress]);

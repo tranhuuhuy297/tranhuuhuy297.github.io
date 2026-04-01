@@ -10,14 +10,13 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Blog', href: '#blog' },
 ];
 
 export const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/tranhuuhuy297', icon: 'Github' as const, external: true },
-  { label: 'LinkedIn', href: '#', icon: 'Linkedin' as const, external: true },
-  { label: 'Email', href: 'mailto:contact@example.com', icon: 'Mail' as const, external: false },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/tranhuuhuy297', icon: 'Linkedin' as const, external: true },
+  { label: 'Email', href: 'mailto:tranhuuhuy297@gmail.com', icon: 'Mail' as const, external: false },
 ];
 
 export const heroData = {
@@ -25,7 +24,7 @@ export const heroData = {
   subtitle: '',
   tagline: '',
   cta: [
-    { label: 'View Projects', href: '#projects', variant: 'primary' as const },
+    { label: 'View Blog', href: '#blog', variant: 'primary' as const },
     { label: 'Read Blog', href: '#blog', variant: 'outline' as const },
   ],
 };
@@ -45,69 +44,67 @@ export const aboutData = {
 
 export const experienceData = [
   {
-    title: 'Staff Engineer',
-    company: 'Company Name',
-    period: '2024 - Present',
-    description:
-      'Leading architecture decisions and mentoring engineering teams across multiple product lines.',
+    title: 'Backend Engineer',
+    company: 'MBBank - Military Commercial Joint Stock Bank',
+    period: '06/2023 - 04/2024',
+    highlights: [
+      'Built data sync service (Oracle to MongoDB) using Spring Boot and Kafka CDC to reduce Core system load',
+      'Developed runtime Kafka consumption control — pause, stop, and reset commit offsets on the fly',
+    ],
   },
   {
-    title: 'Senior Software Engineer',
-    company: 'Company Name',
-    period: '2022 - 2024',
-    description:
-      'Built scalable microservices and improved system reliability to 99.9% uptime.',
+    title: 'Full Stack Engineer',
+    company: 'VinBigData Joint Stock Company',
+    period: '01/2022 - 05/2023',
+    highlights: [
+      'Developed core modules for Vinbase — an AI chatbot management platform — across 2 versions',
+      'Built APIs for chatbot training data and versioning with Flask, FastAPI, and MongoDB',
+      'Cut training data creation time by 50% via SQS-based import/export service with S3 storage',
+      'Implemented frontend features and UX improvements with Nuxt and Vuetify',
+      'Reviewed code, migrated databases, and refactored legacy modules',
+    ],
   },
   {
-    title: 'Software Engineer',
-    company: 'Company Name',
-    period: '2020 - 2022',
-    description:
-      'Developed full-stack features and optimized performance across web applications.',
+    title: 'Software Engineer Intern',
+    company: 'VinBigData Joint Stock Company',
+    period: '08/2021 - 12/2021',
+    highlights: [
+      'Trained ML/DL models using PyTorch on crawled data via Selenium',
+      'Built demo APIs with Flask for model inference',
+    ],
   },
 ];
 
 export const educationData = [
   {
     degree: 'Bachelor of Computer Science',
-    school: 'University Name',
-    period: '2016 - 2020',
-    description: 'Focus on software engineering, algorithms, and distributed systems.',
+    school: 'Hanoi University of Science and Technology',
+    period: '2018 - 2023',
+    highlights: [
+      'CPA: 3.48 / 4.0',
+      '1st prize — HUST-IBM Hackathon 2021',
+      'Deep Learning Specialization (Coursera)',
+    ],
   },
   {
-    degree: 'High School Diploma',
-    school: 'High School Name',
-    period: '2013 - 2016',
-    description: 'Specialized in mathematics and natural sciences.',
+    degree: 'Mathematics',
+    school: 'Ha Long High School for Gifted Students',
+    period: '2015 - 2018',
+    highlights: [
+      '1st prize — Quang Ninh Provincial Mathematics Competition 2018',
+      'Bronze medal — Vietnam Violympic Online Mathematics Contest 2015',
+    ],
   },
 ];
 
-export const projectsData = [
-  {
-    title: 'Project Alpha',
-    description: 'A scalable microservices platform for real-time data processing.',
-    tech: ['TypeScript', 'Node.js', 'PostgreSQL', 'Docker'],
-    github: 'https://github.com/tranhuuhuy297/project-alpha',
-    demo: '#',
-    featured: true,
-  },
-  {
-    title: 'Project Beta',
-    description: 'ML-powered recommendation engine with REST API.',
-    tech: ['Python', 'FastAPI', 'TensorFlow', 'Redis'],
-    github: 'https://github.com/tranhuuhuy297/project-beta',
-    demo: null,
-    featured: false,
-  },
-  {
-    title: 'Project Gamma',
-    description: 'Modern dashboard UI with real-time charts and analytics.',
-    tech: ['React', 'Next.js', 'Tailwind CSS', 'D3.js'],
-    github: 'https://github.com/tranhuuhuy297/project-gamma',
-    demo: '#',
-    featured: false,
-  },
-];
+export const projectsData: {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  demo: string | null;
+  featured: boolean;
+}[] = [];
 
 export const blogPostsData = [
   {

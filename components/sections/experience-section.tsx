@@ -31,6 +31,7 @@ export function ExperienceSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [progressStyle, setProgressStyle] = useState({ left: 0, width: 0 });
+  const [dotCenter, setDotCenter] = useState(0);
 
   const updateProgress = useCallback((index: number) => {
     const track = trackRef.current;
@@ -45,6 +46,7 @@ export function ExperienceSection() {
     // Scale to full track width so first dot = 0% and last dot = 100%
     const ratio = lastCenter > 0 ? activeCenter / lastCenter : 0;
     setProgressStyle({ left: 0, width: ratio * trackRect.width });
+    setDotCenter(activeCenter);
   }, []);
 
   useEffect(() => { updateProgress(active); }, [active, updateProgress]);
@@ -76,7 +78,7 @@ export function ExperienceSection() {
           className="absolute z-20 pointer-events-none"
           style={{ top: -10 }}
           initial={false}
-          animate={{ left: progressStyle.left + progressStyle.width }}
+          animate={{ left: dotCenter }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           <img

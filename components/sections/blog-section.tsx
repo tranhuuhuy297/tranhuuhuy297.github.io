@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/section-wrapper';
 import { Card } from '@/components/ui/card';
@@ -22,15 +23,17 @@ export function BlogSection() {
         viewport={{ once: true, amount: 0.1 }}
       >
         {blogPostsData.map((post) => (
-          <motion.div key={post.title} variants={staggerItemVariants}>
-            <Card className="cursor-default">
-              <span className="text-sm text-text-muted">
-                {post.date} &middot; {post.readTime}
-              </span>
-              <h3 className="text-lg font-bold mt-2">{post.title}</h3>
-              <p className="text-text-muted text-sm mt-2">{post.excerpt}</p>
-              <span className="text-primary text-sm mt-3 inline-block">Coming soon</span>
-            </Card>
+          <motion.div key={post.slug} variants={staggerItemVariants}>
+            <Link href={`/blog/${post.slug}`}>
+              <Card className="cursor-pointer">
+                <span className="text-sm text-text-muted">
+                  {post.date} &middot; {post.readTime}
+                </span>
+                <h3 className="text-lg font-bold mt-2">{post.title}</h3>
+                <p className="text-text-muted text-sm mt-2">{post.excerpt}</p>
+                <span className="text-primary text-sm mt-3 inline-block">Read more &rarr;</span>
+              </Card>
+            </Link>
           </motion.div>
         ))}
       </motion.div>

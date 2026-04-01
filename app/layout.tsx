@@ -4,20 +4,20 @@ import { Navbar } from '@/components/layout/navbar';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Tran Huu Huy | Staff Engineer',
+  title: 'Huy Tran',
   description:
-    'Personal portfolio and blog of Tran Huu Huy — Staff Engineer building elegant solutions to complex problems.',
+    'Personal portfolio and blog of Huy Tran.',
   openGraph: {
-    title: 'Tran Huu Huy | Staff Engineer',
+    title: 'Huy Tran',
     description: 'Personal portfolio and blog.',
     url: 'https://huytran.dev',
-    siteName: 'Tran Huu Huy',
+    siteName: 'Huy Tran',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tran Huu Huy | Staff Engineer',
+    title: 'Huy Tran',
     description: 'Personal portfolio and blog.',
   },
   robots: {

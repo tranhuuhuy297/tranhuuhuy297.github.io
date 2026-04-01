@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'Tran Huu Huy',
-  title: 'Tran Huu Huy | Staff Engineer',
+  name: 'Huy Tran',
+  title: 'Huy Tran',
   description:
-    'Personal portfolio and blog of Tran Huu Huy — Staff Engineer building elegant solutions to complex problems.',
+    'Personal portfolio and blog of Huy Tran.',
   url: 'https://huytran.dev',
 };
 

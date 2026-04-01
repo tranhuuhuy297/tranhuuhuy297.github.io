@@ -61,15 +61,20 @@ export function HeroSection() {
               <div className="flex items-center gap-1.5">
                 {cat.items.map((skill) => {
                   const icon = techIcons[skill];
-                  return icon ? (
+                  if (!icon) return null;
+                  return (
                     <span
                       key={skill}
                       className="w-6 h-6 flex items-center justify-center hover:scale-125 transition-transform"
                       title={skill}
                     >
-                      <svg viewBox="0 0 128 128" className="w-5 h-5" dangerouslySetInnerHTML={{ __html: icon }} />
+                      {icon.type === 'img' ? (
+                        <img src={icon.src} alt={skill} className="w-5 h-5 object-contain" />
+                      ) : (
+                        <svg viewBox={icon.viewBox} className="w-5 h-5" dangerouslySetInnerHTML={{ __html: icon.svg }} />
+                      )}
                     </span>
-                  ) : null;
+                  );
                 })}
               </div>
             </div>

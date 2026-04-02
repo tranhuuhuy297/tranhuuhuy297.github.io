@@ -173,7 +173,6 @@ export const projectsData = [
     highlights: [
       'Nuxt + Vuetify frontend for Bot Studio — the drag-and-drop chatbot builder interface',
       'Flask and FastAPI backend serving training data APIs with MongoDB for versioned bot configs',
-      'SQS-based import/export pipeline with S3 storage — cut training data creation time by 50%',
       'Amazon EKS for container orchestration and continuous deployment',
     ],
     github: '',

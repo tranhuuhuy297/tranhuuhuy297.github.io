@@ -11,7 +11,7 @@ export const navLinks = [
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Blog', href: '#blog' },
+  // { label: 'Blog', href: '#blog' },
 ];
 
 export const socialLinks = [
@@ -25,7 +25,7 @@ export const heroData = {
   subtitle: '',
   tagline: '',
   cta: [
-    { label: 'Read Blog', href: '#blog', variant: 'primary' as const },
+    // { label: 'Read Blog', href: '#blog', variant: 'primary' as const },
   ],
 };
 

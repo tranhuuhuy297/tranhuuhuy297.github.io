@@ -1,9 +1,13 @@
 export const siteConfig = {
   name: 'Huy Tran',
-  title: 'Huy Tran',
+  fullName: 'Trần Hữu Huy',
+  title: 'Huy Tran — Software Engineer | Trần Hữu Huy',
   description:
-    'Personal portfolio and blog of Huy Tran.',
+    'Huy Tran (Trần Hữu Huy / tranhuuhuy297) — Software Engineer specializing in TypeScript, Python, React, GraphQL, and cloud infrastructure (GCP, AWS). Portfolio and blog.',
   url: 'https://huytran.dev',
+  github: 'https://github.com/tranhuuhuy297',
+  linkedin: 'https://linkedin.com/in/tranhuuhuy297',
+  email: 'tranhuuhuy297@gmail.com',
 };
 
 export const navLinks = [

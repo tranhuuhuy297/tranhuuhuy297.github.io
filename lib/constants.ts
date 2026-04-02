@@ -24,9 +24,8 @@ export const heroData = {
   name: '',
   subtitle: '',
   tagline: '',
-  cta: [
-    // { label: 'Read Blog', href: '#blog', variant: 'primary' as const },
-  ],
+  cta: [] as { label: string; href: string; variant: 'primary' | 'outline' }[],
+  // cta: [{ label: 'Read Blog', href: '#blog', variant: 'primary' as const }],
 };
 
 export const aboutData = {

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Huy Tran',
   fullName: 'Trần Hữu Huy',
-  title: 'Huy Tran — Software Engineer | Trần Hữu Huy',
+  title: 'Huy Tran',
   description:
     'Huy Tran (Trần Hữu Huy / tranhuuhuy297) — Software Engineer specializing in TypeScript, Python, React, GraphQL, and cloud infrastructure (GCP, AWS). Portfolio and blog.',
   url: 'https://tranhuuhuy297.github.io',

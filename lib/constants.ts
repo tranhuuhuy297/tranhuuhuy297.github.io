@@ -89,7 +89,7 @@ export const experienceData = [
     projects: ['ARCH Platform', 'CHIKYU (SFA-CRM)'],
     highlights: [
       'Built enterprise SaaS platform for Mizuho Financial Group (Japan\'s 3rd largest bank) — cross-org SSO, custom domains with SSL, IP restrictions, and MFA hardening',
-      'Led end-to-end CloudSign and DocuSign e-signature integrations — API design, cronjob status sync, AWS Secrets Manager migration, role-based permissions, and envelope history tracking',
+      'Led end-to-end CloudSign and DocuSign e-signature integrations — API design, webhook-based status sync, AWS Secrets Manager for API keys, role-based permissions, and envelope history tracking',
       'Designed coarse-grained GraphQL mutation for bi-directional ARCH↔SFA/CRM sync with distributed locking and deduplication, reducing duplicate data and race conditions',
       'Reduced CI build time by 60% (35m → 14m) and lint time by 69% (32m → 10m) via Docker layer caching and ESLint 8→9 migration',
       'Optimized Kubernetes reliability — HPA, PodDisruptionBudget, readiness probes, graceful shutdown, and DB connection pool tuning',

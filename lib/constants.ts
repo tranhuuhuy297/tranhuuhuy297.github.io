@@ -132,7 +132,7 @@ export const projectsData = [
     title: 'ARCH Platform',
     company: 'Geniee International Group',
     logo: '/icons/arch-logo.svg',
-    overview: 'Enterprise SaaS platform for presales and customer success, serving Mizuho (Japan\'s 3rd largest bank), Fujikyu Group (tourism conglomerate, 40 subsidiaries), and other major Japanese corporations.',
+    overview: 'Enterprise SaaS platform for presales and customer success, serving Mizuho (Japan\'s 3rd largest bank) and other major Japanese corporations. Features a collaborative workspace with block-based rich content editor (Lexical + Editor.js) — combining Notion-like editing with embedded tasks, file attachments, and Salesforce field sync within customer-facing pages.',
     highlights: [
       'Monorepo architecture with multiple React/TypeScript apps on Vite — vendor management, shared workspace, form builder, and Salesforce integration — plus shared component libraries and editor wrappers (Lexical, Editor.js)',
       'Schema-first GraphQL API on Node.js/Express with PostgreSQL, TimescaleDB for analytics, and Firebase authentication',
